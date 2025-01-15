@@ -1,0 +1,18 @@
+<h1>Liste des tâches</h1>
+<ul>
+	{% for task in tasks %}
+		<li>
+			{{ task.title }}
+			-
+			{{ task.description }}
+			<a href="{{ path('task_add') }}">Ajouter</a>
+			{% if not task.isDone %}
+				<a href="{{ path('task_done', { id: task.id }) }}">Marquer comme terminée</a>
+
+			{% else %}
+				('Terminée)
+			{% endif %}
+			<a href="{{ path('task_delete', { id: task.id }) }}">Supprimer</a>
+		</li>
+	{% endfor %}
+</ul></head>
